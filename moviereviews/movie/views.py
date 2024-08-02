@@ -1,7 +1,13 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
 from .models import Movie
+
+
+class PermissionReqMixin(UserPassesTestMixin):
+    permission_denied_message = "Dostęp zabroniony!!!"
+
 
 
 # def home(request):

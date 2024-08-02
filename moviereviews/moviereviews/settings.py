@@ -39,7 +39,30 @@ INSTALLED_APPS = [
     'news',
     'debug_toolbar',
     'accounts',
+    'django_redis',
 ]
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis-13626.c8.us-east-1-2.ec2.redns.redis-cloud.com:13626",  # Adres serwera Redis
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "ySDXqmD2LGiGboEhqjmWWdRXzoPNnzHg"
+        }
+    }
+}
+
+SESSION_COOKIE_AGE = 86400  # 1 dzień
+
+# Opcjonalnie, wymuszanie HTTPS dla ciasteczek sesji
+SESSION_COOKIE_SECURE = True  # Używaj True w środowisku produkcyjnym
+
+# Opcjonalnie, zabezpieczenie przed atakami CSRF
+CSRF_COOKIE_SECURE = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

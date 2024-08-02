@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <h5>Recenzja dla filmu {{ movie.title }}</h5>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Dodaj recenzje</button>
+    </form>
+</div>
+{% endblock content %}

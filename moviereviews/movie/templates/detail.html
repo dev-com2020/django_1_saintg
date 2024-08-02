@@ -10,6 +10,9 @@
         {% if movie.url %}
         <a href="{{ movie.url }}">Movie link</a>
         {% endif %}
+        {% if user.is_authenticated %}
+        <a href="{% url 'createreview' movie.id %}">Dodaj recenzje</a>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

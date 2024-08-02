@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'movie',
     'news',
     'debug_toolbar',
+    'accounts',
 ]
 
 MIDDLEWARE = [

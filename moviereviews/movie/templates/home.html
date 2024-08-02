@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <form action="">
+        <label>Szukaj filmu</label>
+        <input type="text" name="searchMovie"/>
+        <button type="submit">Search</button>
+    </form>
+<h1>Witam na stronie {{ name }}</h1>
+<h2>To jest strona home</h2>
+    Wyszukiwanie: {{ searchTerm }}
+    <hr>
+    <br/>
+    <h2>Join us!</h2>
+    <form action="{% url 'signup' %}">
+        <label for="email">Enter email:</label>
+        <input type="email" name="email" id="email"/>
+        <button type="submit">Zapisz się</button>
+    </form>
+    {% for movie in movies %}
+        <h2><a href="{% url 'detail' movie.id %}">{{ movie.title }}</a></h2>
+        <h3>{{ movie.description }}</h3>
+        <img src="{{ movie.image.url }}">
+    {% if movie.url %}
+        <a href="{{ movie.url }}">LINK</a>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock content %}
